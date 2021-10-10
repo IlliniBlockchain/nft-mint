@@ -1,4 +1,4 @@
-#nft-mint
+# nft-mint
 
 
 # Setup
@@ -7,7 +7,7 @@ To install dependencies...
 npm install
 ```
 
-To run test a deploy
+To run test locally
 ```
 npx hardhat run scripts/run.js
 ```
