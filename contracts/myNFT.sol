@@ -11,10 +11,10 @@ import {Base64} from "./libraries/Base64.sol";
 contract MyNFT is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
-    uint256 private _tokenLimit = 500;
-    string baseSVG = "<svg id='svg' viewbox='0 0 500 500' width='500'> <image width='500' href='https://cloudflare-ipfs.com/ipfs/bafkreihy3vlh4dkaokxnncywfnapn643mbbltl37l45dzgzmywgbrhg4ie/'/> <text x='356' y='475' style='position:absolute; fill: white; font-family:Montserrat; font-weight: bold; font-size: 22px;'>";
+    uint256 private _tokenLimit = 3;
+    string baseSVG = "<svg id='svg' viewbox='0 0 500 500' width='500' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'> <image width='500' href='https://cloudflare-ipfs.com/ipfs/bafkreihy3vlh4dkaokxnncywfnapn643mbbltl37l45dzgzmywgbrhg4ie/'/> <text x='356' y='475' style='position:absolute; fill: white; font-family:Montserrat; font-weight: bold; font-size: 22px;'>";
 
-    constructor() ERC721("MyNFT", "NFT") {}
+    constructor() ERC721("TEST", "TESTNFT") {}
 
     function mintNFT(address recipient) public 
       returns(uint256)
@@ -35,8 +35,9 @@ contract MyNFT is ERC721URIStorage, Ownable {
             bytes(
               string(
                 abi.encodePacked(
-                  "{ 'name': 'Illini Blockchain NFT Series 1', 'description': 'An NFT produced by Illini Blockchain on the Rinkeby testnet!','image': 'data:image/svg+xml;base64,",
-                      svgData, "'}"
+                  '{ "name": "Illini Blockchain NFT Series 1", "description": "An NFT produced by Illini Blockchain on the Rinkeby testnet!", "image": "data:image/svg+xml;base64,',
+                    svgData, 
+                  '"}'
                 )
               )
             )
