@@ -4,10 +4,16 @@ import Layout from '../components/layout'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import MetaMaskOnboarding from '@metamask/onboarding'
+import { ethers } from "ethers"
 
 export default function Home() {
 
   const [ metaMaskInstalled, setMetaMaskInstalled ] = useState(false);
+  const [ pendingConnect, setPendingConnect ] = useState(false);
+  const [ pendingMint, setPendingMint ] = useState(false);
+  const [ minted, setMinted ] = useState(false);
+  const [ provider, setProvider ] = useState(null);
+  const [ signer, setSigner ] = useState(null);
 
   const isMetaMaskInstalled = () => {
     //Have to check the ethereum binding on the window object to see if it's installed
@@ -28,11 +34,56 @@ export default function Home() {
     try {
       // Will open the MetaMask UI
       // You should disable this button while the request is pending!
+      setPendingConnect(true);
+      const providerTemp = new ethers.providers.Web3Provider(window.ethereum);
+
+      // test requests
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       console.log(accounts);
+      const balance = await providerTemp.getBalance("ethers.eth");
+      console.log(balance);
+
+      setProvider(providerTemp);
+
+      setPendingConnect(false);
+
+      // The Metamask plugin also allows signing transactions to
+      // send ether and pay to change state within the blockchain.
+      // For this, you need the account signer...
+      const signerTemp = providerTemp.getSigner();
+      setSigner(signerTemp);
+      const account = await signerTemp.getAddress();
+      console.log(account);
+
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const onClickMint = async () => {
+    const mintAddress = "0xAF3F37aD97F8d6C48046dEA42c5DB6dc8a40C69A";
+
+    // The ERC-20 Contract ABI, which is a common contract interface
+    // for tokens (this is the Human-Readable ABI format)
+    const mintAbi = [
+      "function mintNFT(address recipient) public returns(uint256)"
+    ];
+
+    // The Contract object
+    const mintContract = new ethers.Contract(mintAddress, mintAbi, provider);
+
+    const mintWithSigner = mintContract.connect(signer);
+
+    // Send 1 DAI to "ricmoo.firefly.eth"
+
+    const account = await signer.getAddress();
+    const tx = await mintWithSigner.mintNFT(account);
+    setPendingMint(true);
+    await tx.wait();
+    setPendingMint(false);
+    setMinted(true);
+
+
   };
 
   useEffect(() => {
@@ -70,21 +121,9 @@ export default function Home() {
         <h2>
           Create a wallet
         </h2>
-      </div>
-
-      <div className={styles.connectwalletBox}>
-        <h2>
-          Connect your wallet
-        </h2>
-        <button onClick={metaMaskInstalled ? onClickConnect : onClickInstall}>
-          {
-            metaMaskInstalled
-            ?
-            "Connect wallet"
-            :
-            "Install MetaMask"
-          }
-        </button>
+        <p>
+          You can create a MetaMask Ethereum wallet <a href="https://metamask.io/" target="_blank">here</a>.
+        </p>
       </div>
 
       <div className={styles.connectwalletBox}>
@@ -99,42 +138,73 @@ export default function Home() {
           through a faucet although recently many of them have been down. The other option
           is to find someone with some ETH and ask for some. Feel free to find your own faucet, but
           for convenience here are some options:
-          <ul>
-            <li>
-              <a href="https://testnet.help/en/ethfaucet/rinkeby">
-                Ethereum Rinkeby Testnet Faucet
-              </a>
-            </li>
-            <li>
-              <a href="http://rinkeby-faucet.com/">
-                Rinkeby Ether Faucet
-              </a>
-              - only 0.001 ETH
-            </li>
-            <li>
-              <a href="https://rinkeby.faucet.epirus.io/#">
-                Web3 Labs Rinkeby Faucet
-              </a>
-            </li>
-            <li>
-              <a href="https://faucet.rinkeby.io/">
-                Rinkeby Authenticated Faucet
-              </a>
-              - requires social account
-            </li>
-          </ul>
-          is the easiest, although won't give you enough. <a href="https://testnet.help/en/ethfaucet/rinkeby">
-          </a>
-
         </p>
 
+        <ul>
+          <li>
+            <a href="https://testnet.help/en/ethfaucet/rinkeby">
+              Ethereum Rinkeby Testnet Faucet
+            </a>
+          </li>
+          <li>
+            <a href="http://rinkeby-faucet.com/">
+              Rinkeby Ether Faucet
+            </a>
+            - only 0.001 ETH
+          </li>
+          <li>
+            <a href="https://rinkeby.faucet.epirus.io/#">
+              Web3 Labs Rinkeby Faucet
+            </a>
+          </li>
+          <li>
+            <a href="https://faucet.rinkeby.io/">
+              Rinkeby Authenticated Faucet
+            </a>
+            - requires social account
+          </li>
+        </ul>
+        is the easiest, although won't give you enough. <a href="https://testnet.help/en/ethfaucet/rinkeby">
+        </a>
+      </div>
+
+      <div className={styles.connectwalletBox}>
+        <h2>
+          Connect your wallet
+        </h2>
+        <button onClick={metaMaskInstalled ? onClickConnect : onClickInstall}>
+          {
+            metaMaskInstalled
+            ?
+            (pendingConnect ? "Pending" : "Connect wallet")
+            :
+            "Install MetaMask"
+          }
+        </button>
+        {
+          provider !== null
+          &&
+          <p>Connected</p>
+        }
       </div>
 
       <div className={styles.mintBox}>
         <h2>
           Mint an NFT
         </h2>
-
+        <button onClick={onClickMint}>
+          Mint NFT
+        </button>
+        {
+          pendingMint
+          &&
+          <p>Sent transaction. Waiting for transaction...</p>
+        }
+        {
+          minted
+          &&
+          <p>Minted</p>
+        }
       </div>
 
       <div className={styles.openseaBox}>
