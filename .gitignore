@@ -8,3 +8,9 @@ typechain
 cache
 artifacts
 hardhat.config.js
+
+# frontend
+frontend/.next/
+frontend/node_modules
+frontend/build/
+frontend/out/
