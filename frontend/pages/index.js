@@ -61,7 +61,7 @@ export default function Home() {
   };
 
   const onClickMint = async () => {
-    const mintAddress = "0xAF3F37aD97F8d6C48046dEA42c5DB6dc8a40C69A";
+    const mintAddress = "0xfeD2cdE438AB93f6CbcceCfD5BE88Fe48a7f664D";
 
     // The ERC-20 Contract ABI, which is a common contract interface
     // for tokens (this is the Human-Readable ABI format)
