@@ -14,6 +14,9 @@ export default function Home() {
   const [ minted, setMinted ] = useState(false);
   const [ provider, setProvider ] = useState(null);
   const [ signer, setSigner ] = useState(null);
+  const [ txAddr, setTxAddr ] = useState(null);
+  const mintAddress = "0xfeD2cdE438AB93f6CbcceCfD5BE88Fe48a7f664D";
+  const contractLink = "https://rinkeby.etherscan.io/address/" + mintAddress;
 
   const isMetaMaskInstalled = () => {
     //Have to check the ethereum binding on the window object to see if it's installed
@@ -61,7 +64,6 @@ export default function Home() {
   };
 
   const onClickMint = async () => {
-    const mintAddress = "0xfeD2cdE438AB93f6CbcceCfD5BE88Fe48a7f664D";
 
     // The ERC-20 Contract ABI, which is a common contract interface
     // for tokens (this is the Human-Readable ABI format)
@@ -80,6 +82,7 @@ export default function Home() {
     const tx = await mintWithSigner.mintNFT(account);
     setPendingMint(true);
     await tx.wait();
+    setTxAddr(tx.hash);
     setPendingMint(false);
     setMinted(true);
 
@@ -109,9 +112,9 @@ export default function Home() {
           to jump right in.
         </p>
         <p>
-          See what goes on under the hood by reading <Link href="/guide">our guide</Link> on minting
-          an NFT by interacting with the contract itself. And to learn more about blockchain in general,
-          see our website (coming soon).
+          See what goes on under the hood by reading <a href="/guide" target="_blank">our guide</a> on minting
+          an NFT by interacting with the <a href={contractLink} target="_blank">contract</a> itself.
+          And to learn more about blockchain in general, see our website (coming soon).
         </p>
       </div>
 
@@ -175,12 +178,28 @@ export default function Home() {
             - requires social account
           </li>
         </ul>
+        <p>
+          Depending on how much traffic is on
+          the network, gas prices will vary. In the past for this tutorial it's required less than 0.01 ether
+          to mint an NFT. 
+        </p>
+        <p>
+          Additionally, you'll want to switch your network in Metamask from the Ethereum Mainnet to
+          the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
+          top.
+        </p>
       </div>
 
       <div className={styles.connectwalletBox}>
         <h2>
-          Connect your wallet
+          3. Connect your wallet
         </h2>
+        <p>
+          To make the whole process easier, this web app provides buttons that abstract away some of
+          the complexity of interacting with the blockchain yourself. For this web app to mint an NFT
+          using your wallet, you'll have to grant it permission by connecting your wallet. The button
+          below will trigger a pop up that will let you do exactly that.
+        </p>
         <button onClick={metaMaskInstalled ? onClickConnect : onClickInstall}>
           {
             metaMaskInstalled
@@ -199,8 +218,14 @@ export default function Home() {
 
       <div className={styles.mintBox}>
         <h2>
-          Mint an NFT
+          4. Mint an NFT
         </h2>
+        <p>
+          Now it's time to actually mint your NFT! All you have to do is click the button below,
+          and this app will send a transaction to our <a>smart contract</a> telling it to create
+          a new NFT and place it in your account. It will trigger another popup to make sure
+          you want to make the transaction and have enough ether to pay for it.
+        </p>
         <button onClick={onClickMint}>
           Mint NFT
         </button>
@@ -212,19 +237,44 @@ export default function Home() {
         {
           minted
           &&
+          (
+          <>
           <p>Minted</p>
+          <p>Transaction hash: <a href={"https://rinkeby.etherscan.io/tx/" + txAddr} target="_blank">{txAddr}</a></p>
+          </>
+          )
         }
       </div>
 
       <div className={styles.openseaBox}>
         <h2>
-          See your NFT
+          5. See your NFT
         </h2>
         <p>
-          OpenSea is a popular NFT marketplace for the Ethereum network.
-          As of now this app mints NFTs on the Rinkeby test network.
+          There are two ways to "see" your NFT.
+        </p>
+        <p>
+          You can verify that your transaction went through by looking
+          at our <a href={contractLink} target="_blank">contract</a> on etherscan and seeing your transaction.
+          Etherscan is another web app that displays pretty much all data about transactions on the Ethereum network.
+          It should show a transaction sent from your public key with same the transaction hash shown in
+          the last section after you pressed the mint button.
+        </p>
+        <p>
+          You can actually see your NFT on an NFT marketplace. OpenSea is a popular NFT marketplace for the Ethereum network.
           You can view your NFT by going to <a href="https://testnets.opensea.io" target="_blank">testnets.opensea.io</a> and
-          searching up your wallet's public key.
+          searching up your wallet's public key. Paste your public key into the search bar, and an option
+          with your address should come up that you can click. As of writing this you'll need to click that option instead
+          of just pressing enter. After this, you should be able to view your newly minted NFT! Don't worry if your NFT doesn't
+          show up right away, it may take a couple minutes for it to show up on OpenSea.
+        </p>
+      </div>
+
+      <div>
+        <h2>Conclusion</h2>
+        <p>
+          Congrats! You've taken the first step towards breaking into blockchain! If you're looking for next steps
+          or just want to learn more, check out our website (coming soon).
         </p>
       </div>
 
