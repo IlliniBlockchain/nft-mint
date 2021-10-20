@@ -102,25 +102,36 @@ export default function Home() {
         <h1>Illini Blockchain NFT Mint</h1>
         <p>Welcome to the Illini Blockchain NFT Mint!</p>
         <p>
-          See what goes on under the hood by reading <Link href="/guide">our guide</Link> on minting
-          an NFT by interacting with the contract itself.
+          We built this simple web app to make it easy for anyone interested in blockchain
+          to get involved and start playing with the technology. This page will walk you through
+          the process of opening an Ethereum wallet and minting your very own Illini Blockchain NFT.
+          We've done our best to design this so that you don't need to know much about blockchain
+          to jump right in.
         </p>
         <p>
-          To mint your NFT, 1) connect your wallet 2) mint the NFT
-          and then 3) view your NFT on an NFT marketplace. The following
-          directions will walk you through the process.
+          See what goes on under the hood by reading <Link href="/guide">our guide</Link> on minting
+          an NFT by interacting with the contract itself. And to learn more about blockchain in general,
+          see our website (coming soon).
         </p>
       </div>
-      {/*
-      1. connect wallet
-      1.5 get
-      2. mint dapp
-      3. see your nft on opensea
-      */}
+
       <div className={styles.createwalletBox}>
         <h2>
-          Create a wallet
+          1. Create a wallet
         </h2>
+        <p>
+          To interact with a blockchain, you need some sort of address/client to send transactions from.
+          This is the basic function of a wallet. When you open a wallet, you'll get a public and private
+          key pair. The public key is your public address, and your private key is something you can
+          use to prove that you're the owner of your public key. The actual "wallet" itself is just a
+          piece of software to 1) generate your public and private key 2) display information associated
+          with your keys and 3) send transactions and interact with the blockchain using your keys.
+        </p>
+        <p>
+          For this guide, we're going to be using the MetaMask wallet. It's a popular Ethereum wallet that
+          works as a browser extension and a mobile app that makes it easy to interact with web
+          apps like this one.
+        </p>
         <p>
           You can create a MetaMask Ethereum wallet <a href="https://metamask.io/" target="_blank">here</a>.
         </p>
@@ -128,44 +139,42 @@ export default function Home() {
 
       <div className={styles.connectwalletBox}>
         <h2>
-          Get some ETH
+          2. Get some ETH
         </h2>
         <p>
-          To mint an NFT, you have to send a transaction. All transactions
-          on Ethereum require a gas fee. If you just opened your wallet,
-          you won't have any/enough ETH to pay the gas fee for the transaction.
-          Because we're on the test network, you can get some ETH for free
-          through a faucet although recently many of them have been down. The other option
-          is to find someone with some ETH and ask for some. Feel free to find your own faucet, but
-          for convenience here are some options:
+          Any interaction on the blockchain is referred to as a "transaction." To make a transaction
+          you have to pay a "gas fee" in the network's native token, with Ethereum's being ETH, aka ether.
+          When we mint an NFT later in this tutorial, we'll need some ether to pay for the gas fee.
+          If you've just opened your wallet for the first time, you won't have any ether to pay for the fee.
         </p>
-
+        <p>
+          Because this is just a tutorial, we'll be working on a test network called Rinkeby. On a testnet,
+          everything will function exactly the same, except that we won't have to use real money.
+          You can get ether for free on testnets by using a faucet.
+        </p>
+        <p>
+          To use a faucet, all you need to do is go to your MetaMask wallet and retrieve your public key
+          and provide it to the faucet so it can send you some ether. We've listed a few faucets right below:
+        </p>
         <ul>
           <li>
-            <a href="https://testnet.help/en/ethfaucet/rinkeby">
+            <a href="https://testnet.help/en/ethfaucet/rinkeby" target="_blank">
               Ethereum Rinkeby Testnet Faucet
             </a>
           </li>
           <li>
-            <a href="http://rinkeby-faucet.com/">
+            <a href="http://rinkeby-faucet.com/" target="_blank">
               Rinkeby Ether Faucet
             </a>
             - only 0.001 ETH
           </li>
           <li>
-            <a href="https://rinkeby.faucet.epirus.io/#">
-              Web3 Labs Rinkeby Faucet
-            </a>
-          </li>
-          <li>
-            <a href="https://faucet.rinkeby.io/">
+            <a href="https://faucet.rinkeby.io/" target="_blank">
               Rinkeby Authenticated Faucet
             </a>
             - requires social account
           </li>
         </ul>
-        is the easiest, although won't give you enough. <a href="https://testnet.help/en/ethfaucet/rinkeby">
-        </a>
       </div>
 
       <div className={styles.connectwalletBox}>
