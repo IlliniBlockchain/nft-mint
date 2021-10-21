@@ -138,6 +138,19 @@ export default function Home() {
         <p>
           You can create a MetaMask Ethereum wallet <a href="https://metamask.io/" target="_blank">here</a>.
         </p>
+        <p>
+          You'll be prompted with a 12 word "Secret Recovery Phrase". This is essentially the key to your wallet. 
+          Metamask will keep the key for you nicely, and will be protected by the password. Similar to keys in the
+          real world, if you lose your key, you no longer have 'access' to what the key opens. So, keep it safe.
+          The difference between the real world and a digital wallet, is there is no other way to recover it.
+          If you lose your key, you lose the all the funds in the wallet... forever. Don't worry though, with 
+          Metamask, you likely won't have to worry about it.
+        </p>
+        <p>
+          If you plan on depositing any real ETH into this wallet, we suggest you <b> write this down in an accessible,
+          safe, private place you will always have access to.</b> You can also use this phrase to 'import' your wallet into another 
+          service other than Metamask in the future if you wish. 
+        </p>
       </div>
 
       <div className={styles.connectwalletBox}>
@@ -155,6 +168,7 @@ export default function Home() {
           everything will function exactly the same, except that we won't have to use real money.
           You can get ether for free on testnets by using a faucet.
         </p>
+
         <p>
           To use a faucet, all you need to do is go to your MetaMask wallet and retrieve your public key
           and provide it to the faucet so it can send you some ether. We've listed a few faucets right below:
