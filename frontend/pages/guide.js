@@ -15,7 +15,8 @@ export default function Guide() {
         <h1>Illini Blockchain NFT Guide</h1>
         <p>
           Welcome to our guide on how to implement an NFT through
-          through interacting with our smart contract.
+          through interacting with our smart contract. This is currently
+          still in development so check back later!
         </p>
         <p>
           If you want to mint an NFT the easiest way possible,

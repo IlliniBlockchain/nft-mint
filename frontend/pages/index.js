@@ -14,6 +14,9 @@ export default function Home() {
   const [ minted, setMinted ] = useState(false);
   const [ provider, setProvider ] = useState(null);
   const [ signer, setSigner ] = useState(null);
+  const [ txAddr, setTxAddr ] = useState(null);
+  const mintAddress = "0xfeD2cdE438AB93f6CbcceCfD5BE88Fe48a7f664D";
+  const contractLink = "https://rinkeby.etherscan.io/address/" + mintAddress;
 
   const isMetaMaskInstalled = () => {
     //Have to check the ethereum binding on the window object to see if it's installed
@@ -61,7 +64,6 @@ export default function Home() {
   };
 
   const onClickMint = async () => {
-    const mintAddress = "0xfeD2cdE438AB93f6CbcceCfD5BE88Fe48a7f664D";
 
     // The ERC-20 Contract ABI, which is a common contract interface
     // for tokens (this is the Human-Readable ABI format)
@@ -80,6 +82,7 @@ export default function Home() {
     const tx = await mintWithSigner.mintNFT(account);
     setPendingMint(true);
     await tx.wait();
+    setTxAddr(tx.hash);
     setPendingMint(false);
     setMinted(true);
 
@@ -102,76 +105,115 @@ export default function Home() {
         <h1>Illini Blockchain NFT Mint</h1>
         <p>Welcome to the Illini Blockchain NFT Mint!</p>
         <p>
-          See what goes on under the hood by reading <Link href="/guide">our guide</Link> on minting
-          an NFT by interacting with the contract itself.
+          We built this simple web app to make it easy for anyone interested in blockchain
+          to get involved and start playing with the technology. This page will walk you through
+          the process of opening an Ethereum wallet and minting your very own Illini Blockchain NFT.
+          We've done our best to design this so that you don't need to know much about blockchain
+          to jump right in.
         </p>
         <p>
-          To mint your NFT, 1) connect your wallet 2) mint the NFT
-          and then 3) view your NFT on an NFT marketplace. The following
-          directions will walk you through the process.
+          See what goes on under the hood by reading <a href="/guide" target="_blank">our guide</a> on minting
+          an NFT by interacting with the <a href={contractLink} target="_blank">contract</a> itself.
+          And to learn more about blockchain in general, see our website (coming soon).
         </p>
       </div>
-      {/*
-      1. connect wallet
-      1.5 get
-      2. mint dapp
-      3. see your nft on opensea
-      */}
+
       <div className={styles.createwalletBox}>
         <h2>
-          Create a wallet
+          1. Create a wallet
         </h2>
         <p>
+          To interact with a blockchain, you need some sort of address/client to send transactions from.
+          This is the basic function of a wallet. When you open a wallet, you'll get a public and private
+          key pair. The public key is your public address, and your private key is something you can
+          use to prove that you're the owner of your public key. The actual "wallet" itself is just a
+          piece of software to 1) generate your public and private key 2) display information associated
+          with your keys and 3) send transactions and interact with the blockchain using your keys.
+        </p>
+        <p>
+          For this guide, we're going to be using the MetaMask wallet. It's a popular Ethereum wallet that
+          works as a browser extension and a mobile app that makes it easy to interact with web
+          apps like this one.
+        </p>
+        <p>
           You can create a MetaMask Ethereum wallet <a href="https://metamask.io/" target="_blank">here</a>.
+        </p>
+        <p>
+          You'll be prompted with a 12 word "Secret Recovery Phrase". This is essentially the key to your wallet. 
+          Metamask will keep the key for you nicely, and will be protected by the password. Similar to keys in the
+          real world, if you lose your key, you no longer have 'access' to what the key opens. So, keep it safe.
+          The difference between the real world and a digital wallet, is there is no other way to recover it.
+          If you lose your key, you lose the all the funds in the wallet... forever. Don't worry though, with 
+          Metamask, you likely won't have to worry about it.
+        </p>
+        <p>
+          If you plan on depositing any real ETH into this wallet, we suggest you <b> write this down in an accessible,
+          safe, private place you will always have access to.</b> You can also use this phrase to 'import' your wallet into another 
+          service other than Metamask in the future if you wish. 
         </p>
       </div>
 
       <div className={styles.connectwalletBox}>
         <h2>
-          Get some ETH
+          2. Get some ETH
         </h2>
         <p>
-          To mint an NFT, you have to send a transaction. All transactions
-          on Ethereum require a gas fee. If you just opened your wallet,
-          you won't have any/enough ETH to pay the gas fee for the transaction.
-          Because we're on the test network, you can get some ETH for free
-          through a faucet although recently many of them have been down. The other option
-          is to find someone with some ETH and ask for some. Feel free to find your own faucet, but
-          for convenience here are some options:
+          Any interaction on the blockchain is referred to as a "transaction." To make a transaction
+          you have to pay a "gas fee" in the network's native token, with Ethereum's being ETH, aka ether.
+          When we mint an NFT later in this tutorial, we'll need some ether to pay for the gas fee.
+          If you've just opened your wallet for the first time, you won't have any ether to pay for the fee.
+        </p>
+        <p>
+          Because this is just a tutorial, we'll be working on a test network called Rinkeby. On a testnet,
+          everything will function exactly the same, except that we won't have to use real money.
+          You can get ether for free on testnets by using a faucet.
         </p>
 
+        <p>
+          To use a faucet, all you need to do is go to your MetaMask wallet and retrieve your public key
+          and provide it to the faucet so it can send you some ether. We've listed a few faucets right below:
+        </p>
         <ul>
           <li>
-            <a href="https://testnet.help/en/ethfaucet/rinkeby">
+            <a href="https://testnet.help/en/ethfaucet/rinkeby" target="_blank">
               Ethereum Rinkeby Testnet Faucet
             </a>
           </li>
           <li>
-            <a href="http://rinkeby-faucet.com/">
+            <a href="http://rinkeby-faucet.com/" target="_blank">
               Rinkeby Ether Faucet
             </a>
             - only 0.001 ETH
           </li>
           <li>
-            <a href="https://rinkeby.faucet.epirus.io/#">
-              Web3 Labs Rinkeby Faucet
-            </a>
-          </li>
-          <li>
-            <a href="https://faucet.rinkeby.io/">
+            <a href="https://faucet.rinkeby.io/" target="_blank">
               Rinkeby Authenticated Faucet
             </a>
             - requires social account
           </li>
         </ul>
-        is the easiest, although won't give you enough. <a href="https://testnet.help/en/ethfaucet/rinkeby">
-        </a>
+        <p>
+          Depending on how much traffic is on
+          the network, gas prices will vary. In the past for this tutorial it's required less than 0.01 ether
+          to mint an NFT. 
+        </p>
+        <p>
+          Additionally, you'll want to switch your network in Metamask from the Ethereum Mainnet to
+          the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
+          top.
+        </p>
       </div>
 
       <div className={styles.connectwalletBox}>
         <h2>
-          Connect your wallet
+          3. Connect your wallet
         </h2>
+        <p>
+          To make the whole process easier, this web app provides buttons that abstract away some of
+          the complexity of interacting with the blockchain yourself. For this web app to mint an NFT
+          using your wallet, you'll have to grant it permission by connecting your wallet. The button
+          below will trigger a pop up that will let you do exactly that.
+        </p>
         <button onClick={metaMaskInstalled ? onClickConnect : onClickInstall}>
           {
             metaMaskInstalled
@@ -190,8 +232,14 @@ export default function Home() {
 
       <div className={styles.mintBox}>
         <h2>
-          Mint an NFT
+          4. Mint an NFT
         </h2>
+        <p>
+          Now it's time to actually mint your NFT! All you have to do is click the button below,
+          and this app will send a transaction to our <a>smart contract</a> telling it to create
+          a new NFT and place it in your account. It will trigger another popup to make sure
+          you want to make the transaction and have enough ether to pay for it.
+        </p>
         <button onClick={onClickMint}>
           Mint NFT
         </button>
@@ -203,19 +251,44 @@ export default function Home() {
         {
           minted
           &&
+          (
+          <>
           <p>Minted</p>
+          <p>Transaction hash: <a href={"https://rinkeby.etherscan.io/tx/" + txAddr} target="_blank">{txAddr}</a></p>
+          </>
+          )
         }
       </div>
 
       <div className={styles.openseaBox}>
         <h2>
-          See your NFT
+          5. See your NFT
         </h2>
         <p>
-          OpenSea is a popular NFT marketplace for the Ethereum network.
-          As of now this app mints NFTs on the Rinkeby test network.
+          There are two ways to "see" your NFT.
+        </p>
+        <p>
+          You can verify that your transaction went through by looking
+          at our <a href={contractLink} target="_blank">contract</a> on etherscan and seeing your transaction.
+          Etherscan is another web app that displays pretty much all data about transactions on the Ethereum network.
+          It should show a transaction sent from your public key with same the transaction hash shown in
+          the last section after you pressed the mint button.
+        </p>
+        <p>
+          You can actually see your NFT on an NFT marketplace. OpenSea is a popular NFT marketplace for the Ethereum network.
           You can view your NFT by going to <a href="https://testnets.opensea.io" target="_blank">testnets.opensea.io</a> and
-          searching up your wallet's public key.
+          searching up your wallet's public key. Paste your public key into the search bar, and an option
+          with your address should come up that you can click. As of writing this you'll need to click that option instead
+          of just pressing enter. After this, you should be able to view your newly minted NFT! Don't worry if your NFT doesn't
+          show up right away, it may take a couple minutes for it to show up on OpenSea.
+        </p>
+      </div>
+
+      <div>
+        <h2>Conclusion</h2>
+        <p>
+          Congrats! You've taken the first step towards breaking into blockchain! If you're looking for next steps
+          or just want to learn more, check out our website (coming soon).
         </p>
       </div>
 
