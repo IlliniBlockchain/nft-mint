@@ -1,18 +1,22 @@
+import { utils } from 'ethers'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useImperativeHandle } from 'react'
 import Layout from '../components/layout'
+import Section from '../components/section'
 import styles from '../styles/Guide.module.css'
+import utilStyles from '../styles/utils.module.css'
 
 export default function Guide() {
   return (
     <Layout>
       <Head>
-        <title>Illini Blockchain NFT Below the Surface</title>
+        <title>Illini Blockchain NFT Guide</title>
         <meta name="description" content="Guide to manually mint an Illini Blockchain NFT." />
       </Head>
 
-      <div className={styles.header}>
-        <h1>Illini Blockchain NFT Below the Surface</h1>
+      <Section className={utilStyles.bgOrange + " " + utilStyles.topSection}>
+        <h1 className={utilStyles.centerHeader}>Illini Blockchain NFT Guide</h1>
         <p>
           Welcome to our guide on how to mint an NFT through
           interacting with our smart contract. This is meant to give you a
@@ -23,9 +27,9 @@ export default function Guide() {
           If you want to mint an NFT the easiest way possible,
           you can do so through our dapp <Link href="/">here</Link>.
         </p>
-      </div>
+      </Section>
 
-      <div className={styles.createwalletBox}>
+      <Section className={utilStyles.bgBlue}>
         <h2>
           1. Create a wallet
         </h2>
@@ -58,9 +62,9 @@ export default function Guide() {
           safe, private place you will always have access to.</b> You can also use this phrase to 'import' your wallet into another 
           service other than Metamask in the future if you wish. 
         </p>
-      </div>
+      </Section>
 
-      <div className={styles.connectwalletBox}>
+      <Section className={utilStyles.bgPurple}>
         <h2>
           2. Get some ETH
         </h2>
@@ -109,10 +113,10 @@ export default function Guide() {
           the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
           top.
         </p>
-      </div>
+      </Section>
 
 
-      <div className={styles.header}>
+      <Section className={utilStyles.bgOrange}>
         <h2>Step 3: Visit our smart contract on Etherscan</h2>
         <p>
           Etherscan is your best friend when it comes to seeing transactions, contracts, and accounts on Ethereum. Etherscan
@@ -124,9 +128,9 @@ export default function Guide() {
         <p>
           Let's take a visit to our contract <a href="https://rinkeby.etherscan.io/address/0xfeD2cdE438AB93f6CbcceCfD5BE88Fe48a7f664D#code" target="_blank">here</a>.
         </p>
-      </div>
+      </Section>
 
-      <div className={styles.header}>
+      <Section className={utilStyles.bgBlue}>
         <h2>Step 4: Read the Contract</h2>
         <p>
           Let's unpack the contract a little...
@@ -153,10 +157,10 @@ export default function Guide() {
           the NFT art with the tokenID, encodes the data of the SVG plus some metadata into JSON format to form the token's unique identifier,
           and sends the NFT to the recipient.
         </p>
-      </div>
+      </Section>
 
 
-      <div className={styles.header}>
+      <Section className={utilStyles.bgPurple}>
         <h2>Step 5: Mint an NFT</h2>
         <p>
           Now that we've read the code and verified that it does what we promised it would do,
@@ -185,8 +189,8 @@ export default function Guide() {
         <p>
           Once you approve the transaction, you'll see a button to view the transaction in Etherscan. This allows you to check the status and details of the transaction.
         </p>
-      </div>
-      <div className={styles.header}>
+      </Section>
+      <Section className={utilStyles.bgOrange}>
         <h2>Step 6: View NFT on Opensea</h2>
         <p> Congrats, you've now minted your first "fake" NFT! But wait, how do you see it?</p>
         <p> 
@@ -198,15 +202,15 @@ export default function Guide() {
           If you see your NFT, but don't see the artwork yet, don't fret! It takes a few minutes for the artwork to appear. Once you've waited a few minutes,
           refresh the page. You should see your NFT!
         </p>
-      </div>
+      </Section>
 
-      <div>
+      <Section className={utilStyles.bgBlue + " " + utilStyles.bottomSection}>
         <h2>Conclusion</h2>
         <p>
           Congrats! You've taken the first step towards breaking into blockchain! If you're looking for next steps
           or just want to learn more, check out our website (coming soon).
         </p>
-      </div>
+      </Section>
 
     </Layout>
       
