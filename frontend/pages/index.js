@@ -216,20 +216,21 @@ export default function Home() {
           using your wallet, you'll have to grant it permission by connecting your wallet. The button
           below will trigger a pop up that will let you do exactly that.
         </p>
-        <button onClick={metaMaskInstalled ? onClickConnect : onClickInstall}>
+        <button onClick={provider !== null ? (() => {}) : (metaMaskInstalled ? onClickConnect : onClickInstall)}>
           {
+            provider !== null
+            ?
+            "Connected"
+            :
+            (
             metaMaskInstalled
             ?
             (pendingConnect ? "Pending" : "Connect wallet")
             :
             "Install MetaMask"
+            )
           }
         </button>
-        {
-          provider !== null
-          &&
-          <p>Connected</p>
-        }
       </Section>
 
       <Section className={utilStyles.bgBlue}>
@@ -242,20 +243,26 @@ export default function Home() {
           a new NFT and place it in your account. It will trigger another popup to make sure
           you want to make the transaction and have enough ether to pay for it.
         </p>
-        <button onClick={onClickMint}>
-          Mint NFT
+        <button onClick={!minted ? onClickMint : (() => {})}>
+          {
+            minted
+            ?
+            "Minted"
+            :
+            (
+            pendingMint
+            ?
+            "Pending transaction..."
+            :
+            "Mint NFT"
+            )
+          }
         </button>
-        {
-          pendingMint
-          &&
-          <p>Sent transaction. Waiting for transaction...</p>
-        }
         {
           minted
           &&
           (
           <>
-          <p>Minted</p>
           <p>Transaction hash: <a href={"https://rinkeby.etherscan.io/tx/" + txAddr} target="_blank">{txAddr}</a></p>
           </>
           )
@@ -286,7 +293,7 @@ export default function Home() {
         </p>
       </Section>
 
-      <Section className={utilStyles.bgOrange}>
+      <Section className={utilStyles.bgOrange + " " + utilStyles.bottomSection}>
         <h2>Conclusion</h2>
         <p>
           Congrats! You've taken the first step towards breaking into blockchain! If you're looking for next steps

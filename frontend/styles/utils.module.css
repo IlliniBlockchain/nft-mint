@@ -1,6 +1,6 @@
 
 .section {
-  padding: 50px;
+  padding: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,20 +23,27 @@
 }
 
 .bgOrange {
-  background-color: antiquewhite;
+  --bg: antiquewhite;
+  background-color: var(--bg);
 }
 
 .bgBlue {
-  background-color:lightcyan;
+  --bg: lightcyan;
+  background-color: var(--bg);
 }
 
 .bgPurple {
-  background-color: #f0f0ff;
+  --bg: #f0f0ff;
+  background-color: var(--bg);
 }
 
 .topSection {
   padding-top: 125px;
   padding-bottom: 100px;
+}
+
+.bottomSection {
+  padding-bottom: 150px;
 }
 
 .centerHeader {
