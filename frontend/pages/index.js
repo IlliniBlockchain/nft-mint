@@ -112,7 +112,7 @@ export default function Home() {
           to jump right in.
         </p>
         <p>
-          See what goes on under the hood by reading <a href="/guide" target="_blank">our guide</a> on minting
+          See what goes on under the hood by reading <Link href="/guide">our guide</Link> on minting
           an NFT by interacting with the <a href={contractLink} target="_blank">contract</a> itself.
           And to learn more about blockchain in general, see our website (coming soon).
         </p>
