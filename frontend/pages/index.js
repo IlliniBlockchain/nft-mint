@@ -216,9 +216,9 @@ export default function Home() {
           using your wallet, you'll have to grant it permission by connecting your wallet. The button
           below will trigger a pop up that will let you do exactly that.
         </p>
-        <button onClick={provider !== null ? (() => {}) : (metaMaskInstalled ? onClickConnect : onClickInstall)}>
+        <button onClick={signer !== null ? (() => {}) : (metaMaskInstalled ? onClickConnect : onClickInstall)}>
           {
-            provider !== null
+            signer !== null
             ?
             "Connected"
             :
@@ -243,7 +243,7 @@ export default function Home() {
           a new NFT and place it in your account. It will trigger another popup to make sure
           you want to make the transaction and have enough ether to pay for it.
         </p>
-        <button onClick={!minted ? onClickMint : (() => {})}>
+        <button onClick={(!minted && signer !== null) ? onClickMint : (() => {})}>
           {
             minted
             ?
