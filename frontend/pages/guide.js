@@ -7,16 +7,17 @@ export default function Guide() {
   return (
     <Layout>
       <Head>
-        <title>Illini Blockchain NFT Guide</title>
+        <title>Illini Blockchain NFT Below the Surface</title>
         <meta name="description" content="Guide to manually mint an Illini Blockchain NFT." />
       </Head>
 
       <div className={styles.header}>
-        <h1>Illini Blockchain NFT Guide</h1>
+        <h1>Illini Blockchain NFT Below the Surface</h1>
         <p>
-          Welcome to our guide on how to implement an NFT through
-          through interacting with our smart contract. This is currently
-          still in development so check back later!
+          Welcome to our guide on how to mint an NFT through
+          interacting with our smart contract. This is meant to give you a
+          better understanding of the underlying mechanisms that allow an
+          NFT to end up in your wallet.
         </p>
         <p>
           If you want to mint an NFT the easiest way possible,
@@ -114,7 +115,7 @@ export default function Guide() {
       <div className={styles.header}>
         <h2>Step 3: Visit our smart contract on Etherscan</h2>
         <p>
-          Etherscan is your best friend when it comes to seeing transactions, events, and balances on Ethereum. Etherscan
+          Etherscan is your best friend when it comes to seeing transactions, contracts, and accounts on Ethereum. Etherscan
           is a block explorer for Ethereum. Anytime you submit a transaction or deploy a smart contract,
           you can view all the details on this website. Essentially, it's a pretty interface for anyone 
           to view any and all activity on the network. We'll be unpacking the Illini Blockchain NFT
@@ -132,7 +133,7 @@ export default function Guide() {
         </p>
         <p>
           If you're not interested in reading or understanding how the code works, don't worry!
-          You can skip to step 3 if you still want to learn how to interact with the contract directly.
+          You can skip to step 5 if you still want to learn how to interact with the contract directly.
         </p>
         <p>
           Where the actual "art" of the NFT is created is in the file "myNFT.sol", 
@@ -142,14 +143,15 @@ export default function Guide() {
         </p>
         <p>
           This contract extends the ERC721 standard, which is a standard for how NFTs are created.
-          ERC721 is like a template for NFTs across the Ethereum network, meaning all NFTs have a few basic
+          ERC721 is like a template for NFTs across the Ethereum network, meaning they all have a few basic
           functions and characteristics that are common across all NFTs.
         </p>
         <p>
-          Most all NFTs have a function called something along the lines of "mint" or "claim" which allows you to create a new NFT.
+          NFTs have a function called something along the lines of "mint" or "claim" which allows you to create a new NFT.
           The function in our contract is called "mintNFT", and it takes a single parameter, which is an address of the recipient of the NFT.
-          Within the function, a few basic things are happening, the contract increments the count of how many NFTs have been minted (tokenID), assembles
-          the NFT art with the tokenID, encodes the data of the SVG into JSON format (to save data), and sends the NFT to the recipient.
+          Within the function, a few basic things are happening. The contract increments the count of how many NFTs have been minted (tokenID), assembles
+          the NFT art with the tokenID, encodes the data of the SVG plus some metadata into JSON format to form the token's unique identifier,
+          and sends the NFT to the recipient.
         </p>
       </div>
 
@@ -169,8 +171,8 @@ export default function Guide() {
         </p>
         <p>
           Paste this address into the mintNFT function, and click write. You'll see a request for a transaction being sent 
-          to the network in a little window, go ahead and approve the transaction. There's some basic information about how much 
-          the transaction will cost aka "gas fees", this is essentially how much it costs to run this piece of code. A complex contract
+          to the network in a little window. Go ahead and approve the transaction. There's some basic information about how much 
+          the transaction will cost, aka "gas fees." This is essentially how much it costs to run this piece of code. A complex contract
           or large transaction may require a lot of "gas". This is computed similarly to the gas you pay for your car.
         </p>
         <p>
@@ -193,8 +195,8 @@ export default function Guide() {
           you to a page with all of your NFTs. Hopefully you'll be able to see your new NFT!
         </p>
         <p>
-          If you see your NFT, but don't see the artwork yet -- don't fret, it takes a few minutes for the artwork to appear. Once you've waited a few minutes, click on the refresh button
-          on the page and refresh the page. You should see your NFT!
+          If you see your NFT, but don't see the artwork yet, don't fret! It takes a few minutes for the artwork to appear. Once you've waited a few minutes,
+          refresh the page. You should see your NFT!
         </p>
       </div>
 
