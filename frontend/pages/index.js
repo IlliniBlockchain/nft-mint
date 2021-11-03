@@ -1,10 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/layout'
+import Section from '../components/section'
 import styles from '../styles/Home.module.css'
+import utilStyles from '../styles/utils.module.css'
 import { useState, useEffect } from 'react'
 import MetaMaskOnboarding from '@metamask/onboarding'
-import { ethers } from "ethers"
+import { ethers, utils } from "ethers"
 
 export default function Home() {
 
@@ -101,8 +103,8 @@ export default function Home() {
         <meta name="description" content="Dapp interface for people to mint an Illini Blockchain NFT." />
       </Head>
 
-      <div className={styles.header}>
-        <h1>Illini Blockchain NFT Mint</h1>
+      <Section className={utilStyles.bgOrange + " " + utilStyles.topSection}>
+        <h1 className={utilStyles.centerHeader}>Illini Blockchain NFT Mint</h1>
         <p>Welcome to the Illini Blockchain NFT Mint!</p>
         <p>
           We built this simple web app to make it easy for anyone interested in blockchain
@@ -116,9 +118,9 @@ export default function Home() {
           an NFT by interacting with the <a href={contractLink} target="_blank">contract</a> itself.
           And to learn more about blockchain in general, see our website (coming soon).
         </p>
-      </div>
+      </Section>
 
-      <div className={styles.createwalletBox}>
+      <Section className={utilStyles.bgBlue}>
         <h2>
           1. Create a wallet
         </h2>
@@ -151,9 +153,9 @@ export default function Home() {
           safe, private place you will always have access to.</b> You can also use this phrase to 'import' your wallet into another 
           service other than Metamask in the future if you wish. 
         </p>
-      </div>
+      </Section>
 
-      <div className={styles.connectwalletBox}>
+      <Section className={utilStyles.bgPurple}>
         <h2>
           2. Get some ETH
         </h2>
@@ -202,9 +204,9 @@ export default function Home() {
           the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
           top.
         </p>
-      </div>
+      </Section>
 
-      <div className={styles.connectwalletBox}>
+      <Section className={utilStyles.bgOrange}>
         <h2>
           3. Connect your wallet
         </h2>
@@ -228,9 +230,9 @@ export default function Home() {
           &&
           <p>Connected</p>
         }
-      </div>
+      </Section>
 
-      <div className={styles.mintBox}>
+      <Section className={utilStyles.bgBlue}>
         <h2>
           4. Mint an NFT
         </h2>
@@ -258,9 +260,9 @@ export default function Home() {
           </>
           )
         }
-      </div>
+      </Section>
 
-      <div className={styles.openseaBox}>
+      <Section className={utilStyles.bgPurple}>
         <h2>
           5. See your NFT
         </h2>
@@ -282,15 +284,15 @@ export default function Home() {
           of just pressing enter. After this, you should be able to view your newly minted NFT! Don't worry if your NFT doesn't
           show up right away, it may take a couple minutes for it to show up on OpenSea.
         </p>
-      </div>
+      </Section>
 
-      <div>
+      <Section className={utilStyles.bgOrange}>
         <h2>Conclusion</h2>
         <p>
           Congrats! You've taken the first step towards breaking into blockchain! If you're looking for next steps
           or just want to learn more, check out our website (coming soon).
         </p>
-      </div>
+      </Section>
 
     </Layout>
       
