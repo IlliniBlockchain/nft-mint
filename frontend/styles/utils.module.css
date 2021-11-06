@@ -1,0 +1,51 @@
+
+.section {
+  padding: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.column {
+  width: 60%;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .section {
+    padding: 50px 10px;
+  }
+
+  .column {
+      width: 90%;
+  }
+}
+
+.bgOrange {
+  --bg: antiquewhite;
+  background-color: var(--bg);
+}
+
+.bgBlue {
+  --bg: lightcyan;
+  background-color: var(--bg);
+}
+
+.bgPurple {
+  --bg: #f0f0ff;
+  background-color: var(--bg);
+}
+
+.topSection {
+  padding-top: 125px;
+  padding-bottom: 100px;
+}
+
+.bottomSection {
+  padding-bottom: 150px;
+}
+
+.centerHeader {
+  text-align: center;
+}
