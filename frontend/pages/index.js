@@ -204,6 +204,10 @@ export default function Home() {
           the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
           top.
         </p>
+        <p className={utilStyles.bold}>
+          If you're at the event in person, drop you're public address <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5FDQLbP-0saEyaRqE7uq5taF_CQQn_KITPQWt_BdYT1N7Ug/viewform" target="_blank">here</a> and we'll air drop you
+          some ether.
+        </p>
       </Section>
 
       <Section className={utilStyles.bgOrange}>
@@ -227,7 +231,7 @@ export default function Home() {
             ?
             (pendingConnect ? "Pending" : "Connect wallet")
             :
-            "Install MetaMask"
+            "Go to step 1 and install MetaMask"
             )
           }
         </button>

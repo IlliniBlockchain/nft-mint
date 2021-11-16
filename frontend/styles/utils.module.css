@@ -1,4 +1,8 @@
 
+.bold {
+  font-weight: bold;
+}
+
 .section {
   padding: 75px;
   display: flex;
