@@ -116,8 +116,14 @@ export default function Home() {
         <p>
           See what goes on under the hood by reading <Link href="/guide">our guide</Link> on minting
           an NFT by interacting with the <a href={contractLink} target="_blank">contract</a> itself.
+          Hard mode is for anyone who wants to get a deeper look into what's going on behind the scenes!
+          We encourage you to try it if you're technically savvy or you should definitely try it if you 
+          know how to code.
           And to learn more about blockchain in general, see our website (coming soon).
         </p>
+        <div style={{display: "flex"}}>
+          <Link href="/guide" ><button style={{margin: "0 auto"}}> HARD Mode</button></Link>
+        </div>
       </Section>
 
       <Section className={utilStyles.bgBlue}>

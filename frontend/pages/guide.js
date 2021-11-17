@@ -27,6 +27,9 @@ export default function Guide() {
           If you want to mint an NFT the easiest way possible,
           you can do so through our dapp <Link href="/">here</Link>.
         </p>
+        <div style={{display: "flex"}}>
+          <Link href="/" ><button style={{margin: "0 auto"}}> EASY Mode</button></Link>
+        </div>
       </Section>
 
       <Section className={utilStyles.bgBlue}>
