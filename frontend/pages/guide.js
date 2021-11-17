@@ -27,6 +27,9 @@ export default function Guide() {
           If you want to mint an NFT the easiest way possible,
           you can do so through our dapp <Link href="/">here</Link>.
         </p>
+        <div style={{display: "flex"}}>
+          <Link href="/" ><button style={{margin: "0 auto"}}> EASY Mode</button></Link>
+        </div>
       </Section>
 
       <Section className={utilStyles.bgBlue}>
@@ -62,6 +65,7 @@ export default function Guide() {
           safe, private place you will always have access to.</b> You can also use this phrase to 'import' your wallet into another 
           service other than Metamask in the future if you wish. 
         </p>
+        
       </Section>
 
       <Section className={utilStyles.bgPurple}>
@@ -112,6 +116,10 @@ export default function Guide() {
           Additionally, you'll want to switch your network in Metamask from the Ethereum Mainnet to
           the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
           top.
+        </p>
+        <p className={utilStyles.bold}>
+          If you're at the event in person, drop you're public address <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5FDQLbP-0saEyaRqE7uq5taF_CQQn_KITPQWt_BdYT1N7Ug/viewform" target="_blank">here</a> and we'll air drop you
+          some ether.
         </p>
       </Section>
 
