@@ -151,7 +151,7 @@ export default function Home() {
           Metamask will keep the key for you nicely, and will be protected by the password. Similar to keys in the
           real world, if you lose your key, you no longer have 'access' to what the key opens. So, keep it safe.
           The difference between the real world and a digital wallet, is there is no other way to recover it.
-          If you lose your key, you lose the all the funds in the wallet... forever. Don't worry though, with 
+          If you lose your key, you lose all the funds in the wallet... forever. Don't worry though, with 
           Metamask, you likely won't have to worry about it.
         </p>
         <p>
