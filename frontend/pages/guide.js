@@ -83,6 +83,10 @@ export default function Guide() {
           everything will function exactly the same, except that we won't have to use real money.
           You can get ether for free on testnets by using a faucet.
         </p>
+        <p className={utilStyles.bold}>
+          If you're at the event in person, drop you're public address <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5FDQLbP-0saEyaRqE7uq5taF_CQQn_KITPQWt_BdYT1N7Ug/viewform" target="_blank">here</a> and we'll air drop you
+          some ether.
+        </p>
 
         <p>
           To use a faucet, all you need to do is go to your MetaMask wallet and retrieve your public key
@@ -117,10 +121,7 @@ export default function Guide() {
           the Rinkeby Test Network. You can do so by going to Metamask and clicking the dropdown at the
           top.
         </p>
-        <p className={utilStyles.bold}>
-          If you're at the event in person, drop you're public address <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5FDQLbP-0saEyaRqE7uq5taF_CQQn_KITPQWt_BdYT1N7Ug/viewform" target="_blank">here</a> and we'll air drop you
-          some ether.
-        </p>
+
       </Section>
 
 
