@@ -187,6 +187,11 @@ export default function Home() {
         </p>
         <ul>
           <li>
+            <a href="https://faucets.chain.link/" target="_blank">
+                Chainlink Testnet Faucet
+            </a>
+          </li>
+          <li>
             <a href="https://testnet.help/en/ethfaucet/rinkeby" target="_blank">
               Ethereum Rinkeby Testnet Faucet
             </a>
