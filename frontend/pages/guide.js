@@ -93,6 +93,11 @@ export default function Guide() {
           and provide it to the faucet so it can send you some ether. We've listed a few faucets right below:
         </p>
         <ul>
+           <li>
+            <a href="https://faucets.chain.link/" target="_blank">
+                Chainlink Testnet Faucet
+            </a>
+          </li>
           <li>
             <a href="https://testnet.help/en/ethfaucet/rinkeby" target="_blank">
               Ethereum Rinkeby Testnet Faucet
